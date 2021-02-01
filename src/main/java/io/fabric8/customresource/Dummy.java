@@ -16,32 +16,11 @@
 package io.fabric8.customresource;
 
 import io.fabric8.kubernetes.api.model.Namespaced;
-import io.fabric8.kubernetes.api.model.ObjectMeta;
 import io.fabric8.kubernetes.client.CustomResource;
+import io.fabric8.kubernetes.model.annotation.Group;
+import io.fabric8.kubernetes.model.annotation.Version;
 
-/**
- */
-public class Dummy extends CustomResource implements Namespaced {
-  private DummySpec spec;
+@Version("v1")
+@Group("demo.fabric8.io")
+public class Dummy extends CustomResource<DummySpec, Void> implements Namespaced { }
 
-
-  @Override
-  public String toString() {
-    return "Dummy{" +
-        "apiVersion='" + getApiVersion() + '\'' +
-        ", metadata=" + getMetadata() +
-        ", spec=" + spec +
-        '}';
-  }
-
-  public DummySpec getSpec() {
-    return spec;
-  }
-
-  public void setSpec(DummySpec spec) {
-    this.spec = spec;
-  }
-
-  @Override
-  public ObjectMeta getMetadata() { return super.getMetadata(); }
-}
