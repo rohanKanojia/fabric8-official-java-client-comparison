@@ -16,7 +16,6 @@ public class LoadAndCreateService {
         ApiClient client = Config.defaultClient();
         Configuration.setDefaultApiClient(client);
 
-        Yaml.addModelMap("v1", "Service", V1Service.class);
         File file = new File(LoadAndCreateService.class.getResource("/test-svc.yaml").getPath());
         V1Service yamlSvc = (V1Service) Yaml.load(file);
 

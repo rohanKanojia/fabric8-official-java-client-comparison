@@ -1,6 +1,6 @@
 package io.kubernetes;
 
-import com.google.common.reflect.TypeToken;
+import com.google.gson.reflect.TypeToken;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.Configuration;
@@ -19,7 +19,7 @@ public class WatchPods {
         Watch<V1Pod> watch =
                 Watch.createWatch(
                         client,
-                        api.listNamespacedPodCall("rokumar", null, null, null, null, null, null, null, 5, Boolean.TRUE, null),
+                        api.listNamespacedPodCall("rokumar", null, null, null, null, null, 5, null, null, 5, Boolean.TRUE, null),
                         new TypeToken<Watch.Response<V1Pod>>() {}.getType());
         try {
             for (Watch.Response<V1Pod> item : watch) {

@@ -1,11 +1,12 @@
 package io.kubernetes.customresource;
 
+import io.kubernetes.client.common.KubernetesObject;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
 
-import java.io.Serializable;
-
-public class Dummy implements Serializable {
-    V1ObjectMeta metadata;
+public class Dummy implements KubernetesObject {
+    private String apiVersion;
+    private String kind;
+    private V1ObjectMeta metadata;
 
     public Dummy(V1ObjectMeta metadata) {
         this.metadata = metadata;
@@ -19,4 +20,13 @@ public class Dummy implements Serializable {
         this.metadata = metadata;
     }
 
+    @Override
+    public String getApiVersion() {
+        return apiVersion;
+    }
+
+    @Override
+    public String getKind() {
+        return kind;
+    }
 }
