@@ -38,6 +38,6 @@ public class DeploymentDemo {
                 .build();
 
         AppsV1Api appsV1Api = new AppsV1Api();
-        v1Deployment = appsV1Api.createNamespacedDeployment("rokumar", v1Deployment, null, null, null);
+        v1Deployment = appsV1Api.createNamespacedDeployment("default", v1Deployment, null, null, null);
     }
 }

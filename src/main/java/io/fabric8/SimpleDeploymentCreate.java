@@ -30,7 +30,7 @@ public class SimpleDeploymentCreate {
                     .endSpec()
                     .build();
 
-            client.apps().deployments().inNamespace("rokumar").createOrReplace(deployment);
+            client.apps().deployments().inNamespace("default").createOrReplace(deployment);
         }
     }
 }

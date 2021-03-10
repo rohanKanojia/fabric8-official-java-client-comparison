@@ -22,5 +22,5 @@ import io.fabric8.kubernetes.model.annotation.Version;
 
 @Version("v1")
 @Group("demo.fabric8.io")
-public class Dummy extends CustomResource<DummySpec, Void> implements Namespaced { }
+public class Dummy extends CustomResource<DummySpec, DummyStatus> implements Namespaced { }
 

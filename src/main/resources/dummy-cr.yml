@@ -1,7 +1,7 @@
 apiVersion: demo.fabric8.io/v1
 kind: Dummy
 metadata:
-  name: first-dummy
+  name: fabric8-dummy-typeless
 spec:
   foo: first
   bar: dummy

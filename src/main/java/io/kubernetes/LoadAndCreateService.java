@@ -16,10 +16,13 @@ public class LoadAndCreateService {
         ApiClient client = Config.defaultClient();
         Configuration.setDefaultApiClient(client);
 
+        // Load Service YAML manifest into object
         File file = new File(LoadAndCreateService.class.getResource("/test-svc.yaml").getPath());
         V1Service yamlSvc = (V1Service) Yaml.load(file);
 
+        // Apply Service to Kubernetes API
         CoreV1Api api = new CoreV1Api();
-        V1Service createResult = api.createNamespacedService("rokumar", yamlSvc, null, null, null);
+        V1Service createResult = api.createNamespacedService("default", yamlSvc, null, null, null);
+
     }
 }
