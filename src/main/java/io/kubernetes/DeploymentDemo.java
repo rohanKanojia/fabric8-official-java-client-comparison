@@ -18,26 +18,26 @@ public class DeploymentDemo {
         Configuration.setDefaultApiClient(client);
 
         V1Deployment v1Deployment = new V1DeploymentBuilder()
-                .withNewMetadata().withName("nginx-deployment").addToLabels("app", "nginx").endMetadata()
-                .withNewSpec()
-                .withReplicas(3)
-                .withNewSelector()
-                .withMatchLabels(Collections.singletonMap("app", "nginx"))
-                .endSelector()
-                .withNewTemplate()
-                .withNewMetadata().addToLabels("app", "nginx").endMetadata()
-                .withNewSpec()
-                .addNewContainer()
-                .withName("nginx")
-                .withImage("nginx:1.7.9")
-                .addNewPort().withContainerPort(80).endPort()
-                .endContainer()
-                .endSpec()
-                .endTemplate()
-                .endSpec()
-                .build();
+            .withNewMetadata().withName("nginx-deployment").addToLabels("app", "nginx").endMetadata()
+            .withNewSpec()
+            .withReplicas(3)
+            .withNewSelector()
+            .withMatchLabels(Collections.singletonMap("app", "nginx"))
+            .endSelector()
+            .withNewTemplate()
+            .withNewMetadata().addToLabels("app", "nginx").endMetadata()
+            .withNewSpec()
+            .addNewContainer()
+            .withName("nginx")
+            .withImage("nginx:1.7.9")
+            .addNewPort().withContainerPort(80).endPort()
+            .endContainer()
+            .endSpec()
+            .endTemplate()
+            .endSpec()
+            .build();
 
         AppsV1Api appsV1Api = new AppsV1Api();
-        v1Deployment = appsV1Api.createNamespacedDeployment("default", v1Deployment, null, null, null);
+        v1Deployment = appsV1Api.createNamespacedDeployment("default", v1Deployment, null, null, null, null);
     }
 }

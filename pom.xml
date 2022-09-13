@@ -10,14 +10,19 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <client-java.version>11.0.1</client-java.version>
-        <fabric8.version>5.1.1</fabric8.version>
+        <client-java.version>16.0.0</client-java.version>
+        <fabric8.version>6.1.1</fabric8.version>
     </properties>
     <dependencies>
         <!-- Official Client Dependencies -->
         <dependency>
             <groupId>io.kubernetes</groupId>
             <artifactId>client-java</artifactId>
+            <version>${client-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.kubernetes</groupId>
+            <artifactId>client-java-api-fluent</artifactId>
             <version>${client-java.version}</version>
         </dependency>
 

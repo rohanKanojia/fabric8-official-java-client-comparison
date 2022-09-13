@@ -1,16 +1,14 @@
 package io.fabric8;
 
-import io.fabric8.kubernetes.client.DefaultKubernetesClient;
+import io.fabric8.kubernetes.api.model.GenericKubernetesResource;
+import io.fabric8.kubernetes.api.model.GenericKubernetesResourceList;
 import io.fabric8.kubernetes.client.KubernetesClient;
+import io.fabric8.kubernetes.client.KubernetesClientBuilder;
 import io.fabric8.kubernetes.client.dsl.base.CustomResourceDefinitionContext;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 public class CustomResourceCreateDemoTypeless {
     public static void main(String[] args) {
-try (KubernetesClient client = new DefaultKubernetesClient()) {
+try (KubernetesClient client = new KubernetesClientBuilder().build()) {
     // Create Custom Resource Context
     CustomResourceDefinitionContext context = new CustomResourceDefinitionContext
             .Builder()
@@ -23,16 +21,15 @@ try (KubernetesClient client = new DefaultKubernetesClient()) {
             .build();
 
     // Load from Yaml
-    Map<String, Object> dummyObject = client.customResource(context)
-            .load(CustomResourceCreateDemoTypeless.class.getResourceAsStream("/dummy-cr.yml"));
+    GenericKubernetesResource dummyObject = client.genericKubernetesResources(context)
+        .load(CustomResourceCreateDemoTypeless.class.getResourceAsStream("/dummy-cr.yml"))
+        .get();
     // Create Custom Resource
-    client.customResource(context).create("default", dummyObject);
+    client.genericKubernetesResources(context).inNamespace("default").resource(dummyObject).create();
     System.out.println("Created!");
 
-    Map<String, Object> list = client.customResource(context).list("default");
-    System.out.printf("%d items found in default namespace\n", ((List<Object>)list.get("items")).size());
-} catch (IOException e) {
-    e.printStackTrace();
+    GenericKubernetesResourceList list = client.genericKubernetesResources(context).inNamespace("default").list();
+    System.out.printf("%d items found in default namespace\n", list.getItems().size());
 }
     }
 }

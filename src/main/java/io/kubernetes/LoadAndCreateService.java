@@ -22,7 +22,7 @@ public class LoadAndCreateService {
 
         // Apply Service to Kubernetes API
         CoreV1Api api = new CoreV1Api();
-        V1Service createResult = api.createNamespacedService("default", yamlSvc, null, null, null);
+        V1Service createResult = api.createNamespacedService("default", yamlSvc, null, null, null, null);
 
     }
 }

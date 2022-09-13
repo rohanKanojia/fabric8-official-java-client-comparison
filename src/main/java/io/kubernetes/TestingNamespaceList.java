@@ -16,7 +16,7 @@ public class TestingNamespaceList {
 
         CoreV1Api api = new CoreV1Api();
 
-        V1Namespace namespace = api.readNamespace("default", null, null, false);
+        V1Namespace namespace = api.readNamespace("default", null);
         System.out.println(namespace.getMetadata().getName() + " " + namespace.getMetadata().getAnnotations());
     }
 }
