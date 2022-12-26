@@ -12,7 +12,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <client-java.version>17.0.0</client-java.version>
-        <fabric8.version>6.1.1</fabric8.version>
+        <fabric8.version>6.3.1</fabric8.version>
     </properties>
     <dependencies>
         <!-- Official Client Dependencies -->

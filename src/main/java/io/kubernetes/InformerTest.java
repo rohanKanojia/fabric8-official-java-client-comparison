@@ -26,7 +26,7 @@ public class InformerTest {
 
     SharedInformerFactory factory = new SharedInformerFactory(client);
 
-// Node informer
+    // Node informer
     SharedIndexInformer<V1Node> nodeInformer =
         factory.sharedIndexInformerFor(
             (CallGeneratorParams params) -> {
