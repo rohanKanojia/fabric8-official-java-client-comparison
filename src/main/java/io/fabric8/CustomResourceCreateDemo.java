@@ -18,7 +18,7 @@ public class CustomResourceCreateDemo {
             // Dummy Client
             MixedOperation<Dummy, KubernetesResourceList<Dummy>, Resource<Dummy>> dummyClient = client.resources(Dummy.class);
             // Using Dummy Client to create Dummy resource
-            dummyClient.inNamespace("default").resource(dummy).createOrReplace();
+            dummyClient.inNamespace("default").resource(dummy).create();
             System.out.println("created!");
 
             // List All Dummies in default namespace

@@ -11,7 +11,7 @@ public class LoadAndCreateService {
                 .load(LoadAndCreateService.class.getResourceAsStream("/test-svc.yaml"))
                 .get();
 
-            client.services().inNamespace("default").resource(svc).createOrReplace();
+            client.services().inNamespace("default").resource(svc).create();
         }
     }
 }
